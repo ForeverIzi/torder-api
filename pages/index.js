@@ -1,4 +1,4 @@
-export default function Home({ isConnected }) {
+export default function Home(){
   return (
     <div>
       Torder - API
