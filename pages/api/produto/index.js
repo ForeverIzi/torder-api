@@ -8,7 +8,7 @@ export default async(req, res) => {
     switch(method){
         case 'GET':
             try{
-                const Produtos = await Produto.find();
+                const Produtos = await Produto.find().populate('restaurante');
                 res.status(200).json({success: true, data: Produtos})
             }catch(error){
                 res.status(400).json({success: false, massage: `Falha na obter produtos! ${error}`});
