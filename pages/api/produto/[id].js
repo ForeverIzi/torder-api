@@ -21,7 +21,7 @@ export default async(req, res) => {
             break;
         case 'PUT':
             try{
-                const produto = await produto.findByIdAndUpdate(id, req.body, {
+                const produto = await Produto.findByIdAndUpdate(id, req.body, {
                     new: true,
                     runValidators: true
                 });
@@ -29,7 +29,6 @@ export default async(req, res) => {
                 if(!produto){
                     return res.status(400).json({success: false, massage: `Falha ao atualizar produto! ${error}`});
                 }
-
                 return res.status(200).json({success: true, data: produto});
             }catch(error){
                 return res.status(400).json({success: false, massage: `Falha ao atualizar produto! ${error}`});
