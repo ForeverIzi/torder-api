@@ -11,12 +11,12 @@ const ProdutoSchema = new mongoose.Schema({
         maxlength: [60, 'Nome não pode conter mais que 60 caracteres'],
     },
     preco:{
-        type: float,
+        type: Number,
         required: [true, 'Adicionar preço'],
     },
     restaurante:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Restaurante',
+        ref: 'restaurante',
         required: true,
     }
 })

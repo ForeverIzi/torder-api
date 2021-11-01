@@ -11,12 +11,12 @@ export default async(req, res) => {
             try{
                 const restaurante = await Restaurante.findById(id);
                 if(!restaurante){
-                    return res.status(400).json({success: false});
+                    return res.status(400).json({success: false,massage: `Falha ao obter restaurante! ${error}`});
                 }
 
                 return res.status(200).json({success: true, data: restaurante});
             }catch(error){
-                return res.status(400).json({success: false});
+                return res.status(400).json({success: false, massage: `Falha ao obter restaurante! ${error}`});
             }
             break;
         case 'PUT':
@@ -27,24 +27,24 @@ export default async(req, res) => {
                 });
 
                 if(!restaurante){
-                    return res.status(400).json({success: false});
+                    return res.status(400).json({success: false, massage: `Falha ao atualizar restaurante! ${error}`});
                 }
 
                 return res.status(200).json({success: true, data: restaurante});
             }catch(error){
-                return res.status(400).json({success: false});
+                return res.status(400).json({success: false, massage: `Falha ao atualizar restaurante! ${error}`});
             }
             break;
         case 'DELETE':
             try{
                 const deletedRestaurante = await Restaurante.deleteOne({ _id: id});
                 if(!deletedRestaurante){
-                    return res.status(400).json({success: false});
+                    return res.status(400).json({success: false, massage: `Falha ao remover restaurante! ${error}`});
                 }
 
                 return res.status(200).json({success: true, data: {}});
             }catch(error){
-                return res.status(400).json({success: false});
+                return res.status(400).json({success: false, massage: `Falha ao remover restaurante! ${error}`});
             }
             break;
         default:

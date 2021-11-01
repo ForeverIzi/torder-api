@@ -8,7 +8,7 @@ export default async(req, res) => {
     switch(method){
         case 'GET':
             try{
-                const restaurantes = await Restaurante.find({});
+                const restaurantes = await Restaurante.find();
                 res.status(200).json({success: true, data: restaurantes})
             }catch(error){
                 res.status(400).json({success: false, massage: "Falha ao obter restaurantes!"});
