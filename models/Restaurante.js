@@ -8,7 +8,7 @@ const RestauranteSchema = new mongoose.Schema({
     },
     razaoSocial:{
         type: String,
-        required: [true, 'Adicionar um razão social'],
+        required: [true, 'Adicionar razão social'],
         maxlength: [50, 'Nome não pode conter mais que 50 caracteres'],
         unique: true
     },

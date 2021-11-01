@@ -48,7 +48,7 @@ export default async(req, res) => {
             }
             break;
         default:
-            return res.status(400).json({success: false});
+            return res.status(400).json({success: false, massage: "Requisição inválida"});
             break;
     }   
 }
