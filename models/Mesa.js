@@ -12,7 +12,7 @@ const MesaSchema = new mongoose.Schema({
     },
     restaurante:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'restaurante',
+        ref: 'Restaurante',
     }
 })
 

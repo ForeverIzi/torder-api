@@ -1,5 +1,7 @@
 import dbConnect from "../../../utils/dbConnect"; 
 import Mesa from '../../../models/Mesa';
+import Restaurante from "../../../models/Restaurante";
+
 
 dbConnect();
 
@@ -9,7 +11,7 @@ export default async(req, res) => {
     switch(method){
         case 'GET':
             try{
-                const mesa = await Mesa.findById(id);
+                const mesa = await Mesa.findById(id).populate({ path: 'restaurante', model: Restaurante });
                 if(!mesa){
                     return res.status(400).json({success: false});
                 }

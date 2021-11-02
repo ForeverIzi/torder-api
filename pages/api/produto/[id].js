@@ -1,5 +1,7 @@
 import dbConnect from "../../../utils/dbConnect"; 
 import Produto from '../../../models/Produto';
+import Restaurante from "../../../models/Restaurante";
+
 
 dbConnect();
 
@@ -9,7 +11,7 @@ export default async(req, res) => {
     switch(method){
         case 'GET':
             try{
-                const produto = await Produto.findById(id);
+                const produto = await Produto.findById(id).populate({ path: 'restaurante', model: Restaurante });
                 if(!produto){
                     return res.status(400).json({success: false});
                 }

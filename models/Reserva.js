@@ -7,11 +7,11 @@ const ResevaSchema = new mongoose.Schema({
     },
     mesa:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'mesa',
+        ref: 'Mesa',
     },
     cliente:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'cliente',
+        ref: 'Cliente',
     }
 })
 
