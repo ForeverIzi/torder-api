@@ -1,6 +1,6 @@
 import dbConnect from "../../../utils/dbConnect"; 
 import Reserva from '../../../models/Reserva';
-import Mesa from "../../../models/Restaurante";
+import Mesa from "../../../models/Mesa";
 import Cliente from "../../../models/Cliente";
 
 dbConnect();
@@ -10,7 +10,7 @@ export default async(req, res) => {
     switch(method){
         case 'GET':
             try{
-                const reservas = await Reserva.find().populate([{ path: 'mesa', model: Mesa },{ path: 'cliente', model: Cliente } ]);
+                const reservas = await Reserva.find().populate([ { path: 'cliente', model: Cliente }, { path: 'mesa', model: Mesa }]);
                 res.status(200).json({success: true, data: reservas})
             }catch(error){
                 res.status(400).json({success: false, massage: `Falha na obter reservas! ${error}`});
