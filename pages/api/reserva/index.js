@@ -13,7 +13,7 @@ export default async(req, res) => {
                 const reservas = await Reserva.find().populate([ { path: 'cliente', model: Cliente }, { path: 'mesa', model: Mesa }]);
                 res.status(200).json({success: true, data: reservas})
             }catch(error){
-                res.status(400).json({success: false, massage: `Falha na obter reservas! ${error}`});
+                res.status(400).json({success: false, message: `Falha na obter reservas! ${error}`});
             }
             break;
         case 'POST':
@@ -21,11 +21,11 @@ export default async(req, res) => {
                 const reserva = await Reserva.create({...req.body, mesa: req.body.mesa, cliente: req.body.cliente});
                 res.status(201).json({success: true, data: reserva})
             }catch(error){
-                res.status(400).json({success: false, massage: `Falha na criação do reserva! ${error}`});
+                res.status(400).json({success: false, message: `Falha na criação do reserva! ${error}`});
             }
             break;
         default:
-            res.status(400).json({success: false, massage: "Requisição inválida"});
+            res.status(400).json({success: false, message: "Requisição inválida"});
             break;
     }
 }

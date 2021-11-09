@@ -11,7 +11,7 @@ export default async(req, res) => {
                 const clientes = await Cliente.find({});
                 res.status(200).json({success: true, data: clientes})
             }catch(error){
-                res.status(400).json({success: false, massage: `Falha ao obter clientes! ${error}`});
+                res.status(400).json({success: false, message: `Falha ao obter clientes! ${error}`});
             }
             break;
         case 'POST':
@@ -19,11 +19,11 @@ export default async(req, res) => {
                 const cliente = await Cliente.create(req.body);
                 res.status(201).json({success: true, data: cliente})
             }catch(error){
-                res.status(400).json({success: false, massage: `Falha ao cadastrar cliente! ${error}`});
+                res.status(400).json({success: false, message: `Falha ao cadastrar cliente! ${error}`});
             }
             break;
         default:
-            res.status(400).json({success: false, massage: "Requisição inválida"});
+            res.status(400).json({success: false, message: "Requisição inválida"});
             break;
     }
 }

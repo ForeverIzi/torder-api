@@ -12,7 +12,7 @@ export default async(req, res) => {
                 const mesas = await Mesa.find().populate({ path: 'restaurante', model: Restaurante });
                 res.status(200).json({success: true, data: mesas})
             }catch(error){
-                res.status(400).json({success: false, massage: `Falha na obter mesas! ${error}`});
+                res.status(400).json({success: false, message: `Falha na obter mesas! ${error}`});
             }
             break;
         case 'POST':
@@ -20,11 +20,11 @@ export default async(req, res) => {
                 const mesa = await Mesa.create({...req.body, restaurante: req.body.restaurante, cliente: req.body.cliente});
                 res.status(201).json({success: true, data: mesa})
             }catch(error){
-                res.status(400).json({success: false, massage: `Falha na criação do mesa! ${error}`});
+                res.status(400).json({success: false, message: `Falha na criação do mesa! ${error}`});
             }
             break;
         default:
-            res.status(400).json({success: false, massage: "Requisição inválida"});
+            res.status(400).json({success: false, message: "Requisição inválida"});
             break;
     }
 }

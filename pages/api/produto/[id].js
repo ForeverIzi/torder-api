@@ -18,7 +18,7 @@ export default async(req, res) => {
 
                 return res.status(200).json({success: true, data: produto});
             }catch(error){
-                return res.status(400).json({success: false, massage: `Falha ao obter produto! ${error}`});
+                return res.status(400).json({success: false, message: `Falha ao obter produto! ${error}`});
             }
             break;
         case 'PUT':
@@ -29,27 +29,27 @@ export default async(req, res) => {
                 });
 
                 if(!produto){
-                    return res.status(400).json({success: false, massage: `Falha ao atualizar produto! ${error}`});
+                    return res.status(400).json({success: false, message: `Falha ao atualizar produto! ${error}`});
                 }
                 return res.status(200).json({success: true, data: produto});
             }catch(error){
-                return res.status(400).json({success: false, massage: `Falha ao atualizar produto! ${error}`});
+                return res.status(400).json({success: false, message: `Falha ao atualizar produto! ${error}`});
             }
             break;
         case 'DELETE':
             try{
                 const deletedProduto = await Produto.deleteOne({ _id: id});
                 if(!deletedProduto){
-                    return res.status(400).json({success: false, massage: `Falha ao remover produto! ${error}`});
+                    return res.status(400).json({success: false, message: `Falha ao remover produto! ${error}`});
                 }
 
                 return res.status(200).json({success: true, data: {}});
             }catch(error){
-                return res.status(400).json({success: false, massage: `Falha ao remover produto! ${error}`});
+                return res.status(400).json({success: false, message: `Falha ao remover produto! ${error}`});
             }
             break;
         default:
-            return res.status(400).json({success: false, massage: "Requisição inválida"});
+            return res.status(400).json({success: false, message: "Requisição inválida"});
             break;
     }   
 }

@@ -18,7 +18,7 @@ export default async(req, res) => {
 
                 return res.status(200).json({success: true, data: mesa});
             }catch(error){
-                return res.status(400).json({success: false, massage: `Falha ao obter mesa! ${error}`});
+                return res.status(400).json({success: false, message: `Falha ao obter mesa! ${error}`});
             }
             break;
         case 'PUT':
@@ -29,27 +29,27 @@ export default async(req, res) => {
                 });
 
                 if(!mesa){
-                    return res.status(400).json({success: false, massage: `Falha ao atualizar mesa! ${error}`});
+                    return res.status(400).json({success: false, message: `Falha ao atualizar mesa! ${error}`});
                 }
                 return res.status(200).json({success: true, data: mesa});
             }catch(error){
-                return res.status(400).json({success: false, massage: `Falha ao atualizar mesa! ${error}`});
+                return res.status(400).json({success: false, message: `Falha ao atualizar mesa! ${error}`});
             }
             break;
         case 'DELETE':
             try{
                 const deletedMesa = await Mesa.deleteOne({ _id: id});
                 if(!deletedMesa){
-                    return res.status(400).json({success: false, massage: `Falha ao remover mesa! ${error}`});
+                    return res.status(400).json({success: false, message: `Falha ao remover mesa! ${error}`});
                 }
 
                 return res.status(200).json({success: true, data: {}});
             }catch(error){
-                return res.status(400).json({success: false, massage: `Falha ao remover mesa! ${error}`});
+                return res.status(400).json({success: false, message: `Falha ao remover mesa! ${error}`});
             }
             break;
         default:
-            return res.status(400).json({success: false, massage: "Requisição inválida"});
+            return res.status(400).json({success: false, message: "Requisição inválida"});
             break;
     }   
 }

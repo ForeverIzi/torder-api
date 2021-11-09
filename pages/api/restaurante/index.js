@@ -11,7 +11,7 @@ export default async(req, res) => {
                 const restaurantes = await Restaurante.find();
                 res.status(200).json({success: true, data: restaurantes})
             }catch(error){
-                res.status(400).json({success: false, massage: "Falha ao obter restaurantes!"});
+                res.status(400).json({success: false, message: "Falha ao obter restaurantes!"});
             }
             break;
         case 'POST':
@@ -20,11 +20,11 @@ export default async(req, res) => {
                 const restaurante = await Restaurante.create(req.body);
                 res.status(201).json({success: true, data: restaurante})
             }catch(error){
-                res.status(400).json({success: false, massage: `Falha na criação do restaurante! ${error}`});
+                res.status(400).json({success: false, message: `Falha na criação do restaurante! ${error}`});
             }
             break;
         default:
-            res.status(400).json({success: false, massage: "Requisição inválida"});
+            res.status(400).json({success: false, message: "Requisição inválida"});
             break;
     }
 }
