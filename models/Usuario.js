@@ -35,6 +35,4 @@ UsuarioSchema.pre('save', async function(next){
     this.senha = hash;
 });
 
-
-
 module.exports = mongoose.models.Usuario || mongoose.model('Usuario',UsuarioSchema);
