@@ -16,7 +16,7 @@ export default async(req, res) => {
                     return res.status(400).json({success: false});
                 }
 
-                return res.status(200).json({success: true, data: produto});
+                return res.status(200).json({success: true, produto: produto});
             }catch(error){
                 return res.status(400).json({success: false, message: `Falha ao obter produto! ${error}`});
             }
@@ -31,7 +31,7 @@ export default async(req, res) => {
                 if(!produto){
                     return res.status(400).json({success: false, message: `Falha ao atualizar produto! ${error}`});
                 }
-                return res.status(200).json({success: true, data: produto});
+                return res.status(200).json({success: true, produto: produto});
             }catch(error){
                 return res.status(400).json({success: false, message: `Falha ao atualizar produto! ${error}`});
             }
@@ -43,7 +43,7 @@ export default async(req, res) => {
                     return res.status(400).json({success: false, message: `Falha ao remover produto! ${error}`});
                 }
 
-                return res.status(200).json({success: true, data: {}});
+                return res.status(200).json({success: true, produto: {}});
             }catch(error){
                 return res.status(400).json({success: false, message: `Falha ao remover produto! ${error}`});
             }

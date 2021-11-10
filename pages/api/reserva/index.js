@@ -11,7 +11,7 @@ export default async(req, res) => {
         case 'GET':
             try{
                 const reservas = await Reserva.find().populate([ { path: 'cliente', model: Cliente }, { path: 'mesa', model: Mesa }]);
-                res.status(200).json({success: true, data: reservas})
+                res.status(200).json({success: true, reservas: reservas})
             }catch(error){
                 res.status(400).json({success: false, message: `Falha na obter reservas! ${error}`});
             }
@@ -19,7 +19,7 @@ export default async(req, res) => {
         case 'POST':
             try{
                 const reserva = await Reserva.create({...req.body, mesa: req.body.mesa, cliente: req.body.cliente});
-                res.status(201).json({success: true, data: reserva})
+                res.status(201).json({success: true, reserva: reserva})
             }catch(error){
                 res.status(400).json({success: false, message: `Falha na criação do reserva! ${error}`});
             }

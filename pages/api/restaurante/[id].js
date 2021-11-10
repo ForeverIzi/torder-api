@@ -14,7 +14,7 @@ export default async(req, res) => {
                     return res.status(400).json({success: false,message: `Falha ao obter restaurante! ${error}`});
                 }
 
-                return res.status(200).json({success: true, data: restaurante});
+                return res.status(200).json({success: true, restaurante: restaurante});
             }catch(error){
                 return res.status(400).json({success: false, message: `Falha ao obter restaurante! ${error}`});
             }
@@ -30,7 +30,7 @@ export default async(req, res) => {
                     return res.status(400).json({success: false, message: `Falha ao atualizar restaurante! ${error}`});
                 }
 
-                return res.status(200).json({success: true, data: restaurante});
+                return res.status(200).json({success: true, restaurante: restaurante});
             }catch(error){
                 return res.status(400).json({success: false, message: `Falha ao atualizar restaurante! ${error}`});
             }
@@ -42,7 +42,7 @@ export default async(req, res) => {
                     return res.status(400).json({success: false, message: `Falha ao remover restaurante! ${error}`});
                 }
 
-                return res.status(200).json({success: true, data: {}});
+                return res.status(200).json({success: true, restaurante: {}});
             }catch(error){
                 return res.status(400).json({success: false, message: `Falha ao remover restaurante! ${error}`});
             }

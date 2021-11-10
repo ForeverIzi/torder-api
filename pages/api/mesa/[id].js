@@ -16,7 +16,7 @@ export default async(req, res) => {
                     return res.status(400).json({success: false});
                 }
 
-                return res.status(200).json({success: true, data: mesa});
+                return res.status(200).json({success: true, mesa: mesa});
             }catch(error){
                 return res.status(400).json({success: false, message: `Falha ao obter mesa! ${error}`});
             }
@@ -31,7 +31,7 @@ export default async(req, res) => {
                 if(!mesa){
                     return res.status(400).json({success: false, message: `Falha ao atualizar mesa! ${error}`});
                 }
-                return res.status(200).json({success: true, data: mesa});
+                return res.status(200).json({success: true, mesa: mesa});
             }catch(error){
                 return res.status(400).json({success: false, message: `Falha ao atualizar mesa! ${error}`});
             }
@@ -43,7 +43,7 @@ export default async(req, res) => {
                     return res.status(400).json({success: false, message: `Falha ao remover mesa! ${error}`});
                 }
 
-                return res.status(200).json({success: true, data: {}});
+                return res.status(200).json({success: true, mesa: {}});
             }catch(error){
                 return res.status(400).json({success: false, message: `Falha ao remover mesa! ${error}`});
             }

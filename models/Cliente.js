@@ -14,8 +14,9 @@ const ClienteSchema = new mongoose.Schema({
     },
     email:{
         type: String,
-        required: [true, 'Adicionar um nome'],
-        unique: true
+        required: [true, 'Adicionar um email'],
+        unique: true,
+        lowercase: true
     },
     telefone:{
         type: String,

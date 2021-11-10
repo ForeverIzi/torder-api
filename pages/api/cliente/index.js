@@ -9,7 +9,7 @@ export default async(req, res) => {
         case 'GET':
             try{
                 const clientes = await Cliente.find({});
-                res.status(200).json({success: true, data: clientes})
+                res.status(200).json({success: true, clientes: clientes})
             }catch(error){
                 res.status(400).json({success: false, message: `Falha ao obter clientes! ${error}`});
             }
@@ -17,7 +17,7 @@ export default async(req, res) => {
         case 'POST':
             try{
                 const cliente = await Cliente.create(req.body);
-                res.status(201).json({success: true, data: cliente})
+                res.status(201).json({success: true, cliente: cliente})
             }catch(error){
                 res.status(400).json({success: false, message: `Falha ao cadastrar cliente! ${error}`});
             }

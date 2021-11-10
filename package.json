@@ -6,6 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.9",
     "mongoose": "^6.0.12",
     "next": "latest",

@@ -9,8 +9,8 @@ export default async(req, res) => {
     switch(method){
         case 'GET':
             try{
-                const Produtos = await Produto.find().populate({ path: 'restaurante', model: Restaurante });
-                res.status(200).json({success: true, data: Produtos})
+                const produtos = await Produto.find().populate({ path: 'restaurante', model: Restaurante });
+                res.status(200).json({success: true, produtos: produtos})
             }catch(error){
                 res.status(400).json({success: false, message: `Falha na obter produtos! ${error}`});
             }
@@ -18,7 +18,7 @@ export default async(req, res) => {
         case 'POST':
             try{
                 const produto = await Produto.create({...req.body, restaurante: req.body.restaurante});
-                res.status(201).json({success: true, data: produto})
+                res.status(201).json({success: true, produto: produto})
             }catch(error){
                 res.status(400).json({success: false, message: `Falha na criação do produto! ${error}`});
             }

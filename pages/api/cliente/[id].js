@@ -14,7 +14,7 @@ export default async(req, res) => {
                     return res.status(400).json({success: false});
                 }
 
-                return res.status(200).json({success: true, data: cliente});
+                return res.status(200).json({success: true, cliente: cliente});
             }catch(error){
                 return res.status(400).json({success: false, message: `Falha ao cadastrar cliente! ${error}`});
             }
@@ -30,7 +30,7 @@ export default async(req, res) => {
                     return res.status(400).json({success: false, message: `Falha ao atualizar cliente!`});
                 }
 
-                return res.status(200).json({success: true, data: cliente});
+                return res.status(200).json({success: true, cliente: cliente});
             }catch(error){
                 return res.status(400).json({success: false, message: `Falha ao atualizar cliente! ${error}`});
             }
@@ -42,7 +42,7 @@ export default async(req, res) => {
                     return res.status(400).json({success: false, message: `Falha ao remover cliente!`});
                 }
 
-                return res.status(200).json({success: true, data: {}});
+                return res.status(200).json({success: true, cliente: {}});
             }catch(error){
                 return res.status(400).json({success: false, message: `Falha ao remover cliente! ${error}`});
             }

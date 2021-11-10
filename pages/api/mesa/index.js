@@ -10,7 +10,7 @@ export default async(req, res) => {
         case 'GET':
             try{
                 const mesas = await Mesa.find().populate({ path: 'restaurante', model: Restaurante });
-                res.status(200).json({success: true, data: mesas})
+                res.status(200).json({success: true, mesas: mesas})
             }catch(error){
                 res.status(400).json({success: false, message: `Falha na obter mesas! ${error}`});
             }
@@ -18,7 +18,7 @@ export default async(req, res) => {
         case 'POST':
             try{
                 const mesa = await Mesa.create({...req.body, restaurante: req.body.restaurante, cliente: req.body.cliente});
-                res.status(201).json({success: true, data: mesa})
+                res.status(201).json({success: true, mesa: mesa})
             }catch(error){
                 res.status(400).json({success: false, message: `Falha na criação do mesa! ${error}`});
             }

@@ -17,7 +17,7 @@ export default async(req, res) => {
                     return res.status(400).json({success: false});
                 }
 
-                return res.status(200).json({success: true, data: reserva});
+                return res.status(200).json({success: true, reserva: reserva});
             }catch(error){
                 return res.status(400).json({success: false, message: `Falha ao obter reserva! ${error}`});
             }
@@ -32,7 +32,7 @@ export default async(req, res) => {
                 if(!Reserva){
                     return res.status(400).json({success: false, message: `Falha ao atualizar reserva! ${error}`});
                 }
-                return res.status(200).json({success: true, data: reserva});
+                return res.status(200).json({success: true, reserva: reserva});
             }catch(error){
                 return res.status(400).json({success: false, message: `Falha ao atualizar reserva! ${error}`});
             }
@@ -44,7 +44,7 @@ export default async(req, res) => {
                     return res.status(400).json({success: false, message: `Falha ao remover reserva! ${error}`});
                 }
 
-                return res.status(200).json({success: true, data: {}});
+                return res.status(200).json({success: true, reserva: {}});
             }catch(error){
                 return res.status(400).json({success: false, message: `Falha ao remover reserva! ${error}`});
             }
