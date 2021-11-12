@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 
 dbConnect();
 
-export default async(req, res) => {
+const handler = async(req, res) => {
     const{ query: { id }, method } = req;
 
     switch(method){
@@ -57,3 +57,5 @@ export default async(req, res) => {
             break;
     }   
 }
+
+export default middlewareAuth(handler);

@@ -7,8 +7,6 @@ dbConnect();
 
 export default async(req, res) => {
     const { method } = req;
-    const { email } = req.body;
-
     switch(method){
         case 'GET':
             try{
@@ -19,15 +17,18 @@ export default async(req, res) => {
             }
             break;
         case 'POST':
+            const { email } = req.body;
             try{
-                if(await Usuario.findOne({email}))
-                    return res.send(400).json({success: false, message: "Email já cadastrado!"});
+                if(await Usuario.findOne({email})){
+                    return res.status(400).json({success: false, message: "Email já cadastrado!"});
+                }
+                    
 
                 const usuario = await Usuario.create(req.body);
 
                 usuario.senha = undefined;
 
-                res.status(201).json({success: true, usuario: usuario})
+                res.status(201).json({success: true, usuario: usuario, token: gerarToken({id: usuario.id })})
             }catch(error){
                 res.status(400).json({success: false, message: `Falha ao cadastrar Usuario! ${error}`});
             }

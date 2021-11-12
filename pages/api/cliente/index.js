@@ -1,9 +1,10 @@
 import dbConnect from "../../../utils/dbConnect"; 
 import Cliente from '../../../models/Cliente';
+import middlewareAuth from '../../../middlewares/auth';
 
 dbConnect();
 
-export default async(req, res) => {
+const handler = async(req, res) => {
     const { method } = req;
     switch(method){
         case 'GET':
@@ -27,3 +28,5 @@ export default async(req, res) => {
             break;
     }
 }
+
+export default middlewareAuth(handler);

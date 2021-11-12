@@ -3,7 +3,7 @@ import Restaurante from '../../../models/Restaurante';
 
 dbConnect();
 
-export default async(req, res) => {
+const handler = async(req, res) => {
     const { method } = req;
     switch(method){
         case 'GET':
@@ -28,3 +28,4 @@ export default async(req, res) => {
             break;
     }
 }
+export default middlewareAuth(handler);
