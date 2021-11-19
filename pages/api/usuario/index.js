@@ -2,6 +2,7 @@ import dbConnect from "../../../utils/dbConnect";
 import Usuario from '../../../models/Usuario';
 import Cliente from '../../../models/Cliente';
 import Restaurante from "../../../models/Restaurante";
+import gerarToken from '../gerarToken';
 
 dbConnect();
 
@@ -17,12 +18,17 @@ export default async(req, res) => {
             }
             break;
         case 'POST':
-            const { email } = req.body;
+            const { email, cliente, restaurante} = req.body;
             try{
                 if(await Usuario.findOne({email})){
                     return res.status(400).json({success: false, message: "Email já cadastrado!"});
                 }
-                    
+                if(await Usuario.findOne({cliente}) && cliente != null){
+                    return res.status(400).json({success: false, message: "Cliente já cadastrado!"});
+                }
+                if(await Usuario.findOne({restaurante})  && restaurante != null){
+                    return res.status(400).json({success: false, message: "Restaurante já cadastrado!"});
+                }
 
                 const usuario = await Usuario.create(req.body);
 

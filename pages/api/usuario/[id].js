@@ -1,6 +1,7 @@
 import dbConnect from "../../../utils/dbConnect"; 
 import Usuario from '../../../models/Usuario';
 import bcrypt from 'bcrypt';
+import middlewareAuth from '../../../middlewares/auth';
 
 dbConnect();
 

@@ -1,5 +1,6 @@
 import dbConnect from "../../../utils/dbConnect"; 
 import Cliente from '../../../models/Cliente';
+import middlewareAuth from '../../../middlewares/auth';
 
 dbConnect();
 
