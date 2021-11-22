@@ -1,7 +1,7 @@
 import dbConnect from "../../utils/dbConnect"; 
 import Usuario from '../../models/Usuario';
 import bcrypt from 'bcrypt';
-import { gerarToken } from './gerarToken';
+import gerarToken from './gerarToken';
 
 dbConnect();
 
