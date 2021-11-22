@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ResevaSchema = new mongoose.Schema({
+const ReservaSchema = new mongoose.Schema({
     data:{
         type: Date,
         default: Date.now 
@@ -15,4 +15,4 @@ const ResevaSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.models.Reseva || mongoose.model('Reseva',ResevaSchema);
+module.exports = mongoose.models.Reserva || mongoose.model('Reserva',ResevaSchema);
