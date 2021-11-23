@@ -15,4 +15,4 @@ const ReservaSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.models.Reserva || mongoose.model('Reserva',ResevaSchema);
+module.exports = mongoose.models.Reserva || mongoose.model('Reserva',ReservaSchema);
