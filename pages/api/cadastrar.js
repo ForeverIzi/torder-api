@@ -31,8 +31,7 @@ export default async(req, res) => {
                     const usuario = await Usuario.create(usuarioData);
                     res.status(201).json({success: true, usuario: usuario, token: gerarToken({ idUsuario: usuario.id, idRestaurante: usuario.restaurante})})
                 }
-                    
-                console.log(req.body.ehAdminRestuarante);
+                
                 res.status(400).json({success: false, message: 'Campo ehAdminRestaurante precisa ser passado.'});
                 
             }catch(error){
