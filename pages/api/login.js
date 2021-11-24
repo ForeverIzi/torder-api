@@ -21,6 +21,8 @@ export default async(req, res) => {
         
     
     usuario.senha = undefined;
-
-    res.send({usuario, token: gerarToken({ idUsuario: usuario.id, idCliente: usuario.cliente._id, idRestaurante: usuario.restaurante._id})});
+    if(usuario.cliente != undefined && usuario.cliente != null)
+        res.send({usuario, token: gerarToken({ idUsuario: usuario.id, idCliente: usuario.cliente._id})});
+    if(usuario.restaurante != undefined && usuario.restaurante != null)
+        res.send({usuario, token: gerarToken({ idUsuario: usuario.id,idRestaurante: usuario.restaurante._id})});
 }
