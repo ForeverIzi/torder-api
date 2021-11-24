@@ -12,13 +12,15 @@ export default async(req, res) => {
         case 'POST':
             const { email, senha, ehAdminRestaurante} = req.body;
             try{
+                console.log(email);
+                console.log(ehAdminRestaurante);
                 if(await Usuario.findOne({email})){
                     return res.status(400).json({success: false, message: "Email já cadastrado!"});
                 }
                 if(ehAdminRestaurante == undefined && ehAdminRestaurante == null){
                     ehAdminRestaurante = false;
                 }
-                
+
                 if(!ehAdminRestaurante){
                     const cliente = await Cliente.create(req.body);
                     const usuarioData = req.body;
@@ -26,13 +28,14 @@ export default async(req, res) => {
                     const usuario = await Usuario.create(usuarioData);
                     return res.status(201).json({success: true, usuario: usuario, token: gerarToken({ idUsuario: usuario.id, idCliente: usuario.cliente})})
                 }else{
-                    const cliente = await Cliente.create(req.body);
+                    
+                    const restaurante = await Restaurante.create(req.body);
                     const usuarioData = req.body;
-                    usuarioData['restraurante'] = restaurante.id;
+                    usuarioData['restaurante'] = restaurante.id;
                     const usuario = await Usuario.create(usuarioData);
                     return res.status(201).json({success: true, usuario: usuario, token: gerarToken({ idUsuario: usuario.id, idRestaurante: usuario.restaurante})})
                 }
-                
+
                 return res.status(400).json({success: false, message: 'Campo ehAdminRestaurante precisa ser passado.'});
                 
             }catch(error){
