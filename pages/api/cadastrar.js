@@ -12,8 +12,6 @@ export default async(req, res) => {
         case 'POST':
             const { email, senha, ehAdminRestaurante} = req.body;
             try{
-                console.log(email);
-                console.log(ehAdminRestaurante);
                 if(await Usuario.findOne({email})){
                     return res.status(400).json({success: false, message: "Email já cadastrado!"});
                 }
