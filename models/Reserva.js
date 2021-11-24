@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
 
 const ReservaSchema = new mongoose.Schema({
-    data:{
+    horarioCiacao:{
         type: Date,
         default: Date.now 
+    },
+    horarioReserva: {
+        type: Date,
     },
     mesa:{
         type: mongoose.Schema.Types.ObjectId,

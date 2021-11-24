@@ -10,6 +10,10 @@ const MesaSchema = new mongoose.Schema({
         type: Number,
         required: [true, 'Adicionar a quantidade de cadeiras'],
     },
+    status:{
+        type: Boolean,
+        default: false,
+    },
     restaurante:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Restaurante',
