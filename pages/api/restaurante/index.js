@@ -17,7 +17,6 @@ const handler = async(req, res) => {
             break;
         case 'POST':
             try{
-                console.log(req.body);
                 const restaurante = await Restaurante.create(req.body);
                 res.status(201).json({success: true, restaurante: restaurante})
             }catch(error){

@@ -34,7 +34,7 @@ export default async(req, res) => {
 
                 usuario.senha = undefined;
 
-                res.status(201).json({success: true, usuario: usuario, token: gerarToken({id: usuario.id })})
+                res.status(201).json({success: true, usuario: usuario})
             }catch(error){
                 res.status(400).json({success: false, message: `Falha ao cadastrar Usuario! ${error}`});
             }
