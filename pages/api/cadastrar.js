@@ -15,16 +15,17 @@ export default async(req, res) => {
                 if(await Usuario.findOne({email})){
                     return res.status(400).json({success: false, message: "Email já cadastrado!"});
                 }
-
-                if(!req.body.ehAdminRestaurante && req.body.ehAdminRestaurante != undefined){
+                if(ehAdminRestaurante == undefined && ehAdminRestaurante == null){
+                    ehAdminRestaurante = false;
+                }
+                
+                if(!ehAdminRestaurante){
                     const cliente = await Cliente.create(req.body);
                     const usuarioData = req.body;
                     usuarioData['cliente'] = cliente.id;
                     const usuario = await Usuario.create(usuarioData);
                     return res.status(201).json({success: true, usuario: usuario, token: gerarToken({ idUsuario: usuario.id, idCliente: usuario.cliente})})
-                }
-                    
-                if(req.body.ehAdminRestaurante && req.body.ehAdminRestaurante != undefined){
+                }else{
                     const cliente = await Cliente.create(req.body);
                     const usuarioData = req.body;
                     usuarioData['restraurante'] = restaurante.id;
