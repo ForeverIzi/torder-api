@@ -21,7 +21,7 @@ export default async(req, res) => {
                     const usuarioData = req.body;
                     usuarioData['cliente'] = cliente.id;
                     const usuario = await Usuario.create(usuarioData);
-                    res.status(201).json({success: true, usuario: usuario, token: gerarToken({ idUsuario: usuario.id, idCliente: usuario.cliente})})
+                    return res.status(201).json({success: true, usuario: usuario, token: gerarToken({ idUsuario: usuario.id, idCliente: usuario.cliente})})
                 }
                     
                 if(req.body.ehAdminRestuarante && req.body.ehAdminRestuarante != undefined){
@@ -29,17 +29,17 @@ export default async(req, res) => {
                     const usuarioData = req.body;
                     usuarioData['restraurante'] = restaurante.id;
                     const usuario = await Usuario.create(usuarioData);
-                    res.status(201).json({success: true, usuario: usuario, token: gerarToken({ idUsuario: usuario.id, idRestaurante: usuario.restaurante})})
+                    return res.status(201).json({success: true, usuario: usuario, token: gerarToken({ idUsuario: usuario.id, idRestaurante: usuario.restaurante})})
                 }
                 
-                res.status(400).json({success: false, message: 'Campo ehAdminRestaurante precisa ser passado.'});
+                return res.status(400).json({success: false, message: 'Campo ehAdminRestaurante precisa ser passado.'});
                 
             }catch(error){
-                res.status(400).json({success: false, message: `Falha ao cadastrar Usuario! ${error}`});
+                return res.status(400).json({success: false, message: `Falha ao cadastrar Usuario! ${error}`});
             }
             break;
         default:
-            res.status(400).json({success: false, message: "Requisição inválida"});
+            return res.status(400).json({success: false, message: "Requisição inválida"});
             break;
     }
 }
