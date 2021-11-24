@@ -1,6 +1,6 @@
 import dbConnect from "../../../utils/dbConnect"; 
 import Reserva from '../../../models/Reserva';
-import Mesa from "../../../models/Restaurante";
+import Mesa from "../../../models/Mesa";
 import Cliente from "../../../models/Cliente";
 import middlewareAuth from '../../../middlewares/auth';
 
