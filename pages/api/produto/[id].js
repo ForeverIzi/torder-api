@@ -12,7 +12,7 @@ const handler = async(req, res) => {
     switch(method){
         case 'GET':
             try{
-                const produto = await Produto.findById(id).populate({ path: 'restaurante', model: Restaurante });
+                const produto = await Produto.findById({id});
                 if(!produto){
                     return res.status(400).json({success: false});
                 }
@@ -39,8 +39,8 @@ const handler = async(req, res) => {
             break;
         case 'DELETE':
             try{
-                const deletedProduto = await Produto.deleteOne({ _id: id});
-                if(!deletedProduto){
+                const deletedMesa = await Produto.deleteOne({ _id: id});
+                if(!deletedMesa){
                     return res.status(400).json({success: false, message: `Falha ao remover produto! ${error}`});
                 }
 

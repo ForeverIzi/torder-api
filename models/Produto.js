@@ -18,6 +18,11 @@ const ProdutoSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Restaurante',
         required: true,
+    },
+    categoria:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Categoria',
+        required: true,
     }
 })
 

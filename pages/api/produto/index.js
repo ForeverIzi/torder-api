@@ -10,7 +10,7 @@ const handler = async(req, res) => {
     switch(method){
         case 'GET':
             try{
-                const produtos = await Produto.find().populate({ path: 'restaurante', model: Restaurante });
+                const produtos = await Produto.find();
                 res.status(200).json({success: true, produtos: produtos})
             }catch(error){
                 res.status(400).json({success: false, message: `Falha na obter produtos! ${error}`});
@@ -18,7 +18,8 @@ const handler = async(req, res) => {
             break;
         case 'POST':
             try{
-                const produto = await Produto.create({...req.body, restaurante: req.body.restaurante});
+                console.log(req.body.categoria);
+                const produto = await Produto.create({...req.body, restaurante: req.body.restaurante, categoria: req.body.categoria});
                 res.status(201).json({success: true, produto: produto})
             }catch(error){
                 res.status(400).json({success: false, message: `Falha na criação do produto! ${error}`});
