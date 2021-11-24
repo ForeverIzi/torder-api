@@ -45,6 +45,9 @@ const RestauranteSchema = new mongoose.Schema({
         telefone2: {
             type: String,
         },
+    },
+    status:{
+        type: Boolean,
     }
         
 })
