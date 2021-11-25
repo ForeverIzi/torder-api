@@ -5,12 +5,12 @@ import middlewareAuth from '../../../middlewares/auth';
 dbConnect();
 
 const handler = async(req, res) => {
-    const{ query: { restauranteId, estaAberto }, method } = req;
+    const{ query: { idRestaurante, estaAberto }, method } = req;
 
     switch(method){
-        case 'PATCH':
+        case 'PUT':
             try{
-                const restaurante = await Restaurante.findByIdAndUpdate(restauranteId, {estaAberto: estaAberto}, {
+                const restaurante = await Restaurante.findByIdAndUpdate(idRestaurante, {estaAberto: estaAberto}, {
                     new: true,
                     runValidators: true
                 });
