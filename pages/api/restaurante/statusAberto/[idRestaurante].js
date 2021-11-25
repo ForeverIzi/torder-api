@@ -1,6 +1,6 @@
-import dbConnect from "../../../utils/dbConnect"; 
-import Restaurante from '../../../models/Restaurante';
-import middlewareAuth from '../../../middlewares/auth';
+import dbConnect from "../../../../utils/dbConnect"; 
+import Restaurante from '../../../../models/Restaurante';
+import middlewareAuth from '../../../../middlewares/auth';
 
 dbConnect();
 
