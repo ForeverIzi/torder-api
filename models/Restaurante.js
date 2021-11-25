@@ -46,7 +46,7 @@ const RestauranteSchema = new mongoose.Schema({
             type: String,
         },
     },
-    status:{
+    estaAberto:{
         type: Boolean,
     }
         
