@@ -9,7 +9,7 @@ const UsuarioSchema = new mongoose.Schema({
     },
     senha:{
         type: String,
-        required: [true, 'Adicionar senha'],
+        required: ['Adicionar senha'],
         select: false
     },
     criadoEm:{
