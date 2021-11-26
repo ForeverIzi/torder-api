@@ -1,8 +1,7 @@
 import dbConnect from "../../../../utils/dbConnect"; 
 import Produto from '../../../../models/Produto';
-import Categoria from "../../../../models/Categoria";
 import middlewareAuth from '../../../../middlewares/auth';
-
+import Categoria from "../../../../models/Categoria";
 
 dbConnect();
 
@@ -14,7 +13,7 @@ const handler = async(req, res) => {
             try{
                 let produto;
                 if(categoria)
-                     produto = await Produto.find({restaurante: idRestaurante, categoria: categoria});
+                     produto = await Produto.find({restaurante: idRestaurante, categoria: categoria}).populate({ path: 'categoria', model: Categoria });
                 else
                     produto = await Produto.find({restaurante: idRestaurante});
                 

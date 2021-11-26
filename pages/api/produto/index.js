@@ -10,7 +10,7 @@ const handler = async(req, res) => {
     switch(method){
         case 'GET':
             try{
-                const produtos = await Produto.find();
+                const produtos = await Produto.find().populate({ path: 'categoria', model: Categoria });
                 res.status(200).json({success: true, produtos: produtos})
             }catch(error){
                 res.status(400).json({success: false, message: `Falha na obter produtos! ${error}`});
