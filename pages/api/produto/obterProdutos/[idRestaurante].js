@@ -3,6 +3,7 @@ import Produto from '../../../../models/Produto';
 import middlewareAuth from '../../../../middlewares/auth';
 import Categoria from "../../../../models/Categoria";
 
+
 dbConnect();
 
 const handler = async(req, res) => {
