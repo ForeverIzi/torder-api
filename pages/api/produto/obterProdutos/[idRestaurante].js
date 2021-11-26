@@ -1,6 +1,6 @@
 import dbConnect from "../../../../utils/dbConnect"; 
 import Produto from '../../../../models/Produto';
-import Restaurante from "../../../../models/Restaurante";
+import Categoria from "../../../../models/Categoria";
 import middlewareAuth from '../../../../middlewares/auth';
 
 
@@ -14,9 +14,9 @@ const handler = async(req, res) => {
             try{
                 let produto;
                 if(categoria)
-                     produto = await Produto.find({restaurante: idRestaurante, categoria: categoria});
+                     produto = await Produto.find({restaurante: idRestaurante, categoria: categoria}).populate({ path: 'categoria', model: Categoria });
                 else
-                    produto = await Produto.find({restaurante: idRestaurante});
+                    produto = await Produto.find({restaurante: idRestaurante}).populate({ path: 'categoria', model: Categoria });
                 
                 if(!produto){
                     return res.status(400).json({success: false});

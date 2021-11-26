@@ -1,6 +1,6 @@
 import dbConnect from "../../../utils/dbConnect"; 
 import Produto from '../../../models/Produto';
-import Restaurante from "../../../models/Restaurante";
+import Categoria from "../../../models/Categoria";
 import middlewareAuth from '../../../middlewares/auth';
 
 dbConnect();
@@ -10,7 +10,7 @@ const handler = async(req, res) => {
     switch(method){
         case 'GET':
             try{
-                const produtos = await Produto.find();
+                const produtos = await Produto.find().populate({ path: 'categoria', model: Categoria });
                 res.status(200).json({success: true, produtos: produtos})
             }catch(error){
                 res.status(400).json({success: false, message: `Falha na obter produtos! ${error}`});
