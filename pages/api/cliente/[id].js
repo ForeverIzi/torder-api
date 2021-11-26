@@ -10,7 +10,7 @@ const handler = async(req, res) => {
     switch(method){
         case 'GET':
             try{
-                const cliente = await Cliente.findById(id);
+                const cliente = [await Cliente.findById(id)];
                 if(!cliente){
                     return res.status(400).json({success: false});
                 }

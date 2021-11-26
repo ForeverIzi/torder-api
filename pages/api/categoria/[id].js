@@ -12,7 +12,7 @@ const handler = async(req, res) => {
     switch(method){
         case 'GET':
             try{
-                const categoria = await Categoria.findById({id}).populate({ path: 'restaurante', model: Restaurante });
+                const categoria = [await Categoria.findById({id}).populate({ path: 'restaurante', model: Restaurante })];
                 if(!categoria){
                     return res.status(400).json({success: false});
                 }

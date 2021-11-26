@@ -11,7 +11,7 @@ const handler = async(req, res) => {
     switch(method){
         case 'GET':
             try{
-                const usuario = await Usuario.findById(id);
+                const usuario = [await Usuario.findById(id)];
                 if(!usuario){
                     return res.status(400).json({success: false});
                 }

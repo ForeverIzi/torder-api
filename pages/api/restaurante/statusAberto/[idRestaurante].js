@@ -10,10 +10,10 @@ const handler = async(req, res) => {
     switch(method){
         case 'PUT':
             try{
-                const restaurante = await Restaurante.findByIdAndUpdate(idRestaurante, {estaAberto: estaAberto}, {
+                const restaurante = [await Restaurante.findByIdAndUpdate(idRestaurante, {estaAberto: estaAberto}, {
                     new: true,
                     runValidators: true
-                });
+                })];
                 if(!restaurante){
                     return res.status(400).json({success: false, message: `Falha ao atualizar restaurante!`});
                 }
