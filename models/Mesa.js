@@ -11,8 +11,8 @@ const MesaSchema = new mongoose.Schema({
         required: [true, 'Adicionar a quantidade de cadeiras'],
     },
     status:{
-        type: Boolean,
-        default: false,
+        type: String,
+        default: "Disponivel",
     },
     restaurante:{
         type: mongoose.Schema.Types.ObjectId,
