@@ -10,8 +10,8 @@ const handler = async(req, res) => {
     switch(method){
         case 'GET':
             try{
-                const mesas = Mesa.find({restaurante: restauranteId}).where('status').equals('Disponivel');
-                   
+                const mesas = await Mesa.find({restaurante: restauranteId}).where('status').equals('Disponivel');
+                console.log(mesas);
                 if(!mesas){
                     return res.status(400).json({success: false});
                 }
