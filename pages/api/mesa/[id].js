@@ -12,7 +12,8 @@ const handler = async(req, res) => {
     switch(method){
         case 'GET':
             try{
-                const mesa = [await Mesa.findById({id}).populate({ path: 'restaurante', model: Restaurante })];
+                console.log(id);
+                const mesa = [await Mesa.findById(id).populate({ path: 'restaurante', model: Restaurante })];
                 if(!mesa){
                     return res.status(400).json({success: false});
                 }
