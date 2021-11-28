@@ -11,12 +11,13 @@ const handler = async(req, res) => {
         case 'GET':
             try{
                 const mesas = Mesa.find({restaurante: restauranteId}).where('status').equals('Disponivel');
-                   
-                if(!mesas){
-                    return res.status(400).json({success: false});
-                }
-
-               res.status(200).json({success: true, mesas: mesas})
+                mesas.count(function (err, count) {
+                    if (err) 
+                        res.status(400).json({success: false, message: `Falha ao obter total de mesas! ${err}`});
+                    else 
+                        res.status(200).json({success: true, totalMesas: count})
+                    });
+               
             }catch(error){
                 res.status(400).json({success: false, message: `Falha na obter mesas! ${error}`});
             }
