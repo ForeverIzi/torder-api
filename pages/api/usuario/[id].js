@@ -23,10 +23,10 @@ const handler = async(req, res) => {
             break;
         case 'PUT':
             try{
-                
-                const hash = await bcrypt.hash(req.body.senha,10);
-                req.body.senha = hash;
-
+                if(req.body.senha){
+                    const hash = await bcrypt.hash(req.body.senha,10);
+                    req.body.senha = hash;
+                }
                 const usuario = await Usuario.findByIdAndUpdate(id, req.body, {
                     new: true,
                     runValidators: true,
