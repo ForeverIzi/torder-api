@@ -31,7 +31,7 @@ const handler = async(req, res) => {
                 });
 
                 if(!mesa){
-                    return res.status(400).json({success: false, message: `Falha ao atualizar mesa! ${error}`});
+                    return res.status(400).json({success: false, message: `Falha ao atualizar mesa!`});
                 }
                 return res.status(200).json({success: true, mesa: mesa});
             }catch(error){
