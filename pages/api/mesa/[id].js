@@ -12,7 +12,6 @@ const handler = async(req, res) => {
     switch(method){
         case 'GET':
             try{
-                console.log(id);
                 const mesa = [await Mesa.findById(id).populate({ path: 'restaurante', model: Restaurante })];
                 if(!mesa){
                     return res.status(400).json({success: false});
@@ -29,7 +28,6 @@ const handler = async(req, res) => {
                     new: true,
                     runValidators: true
                 });
-
                 if(!mesa){
                     return res.status(400).json({success: false, message: `Falha ao atualizar mesa!`});
                 }
