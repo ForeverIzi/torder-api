@@ -12,7 +12,7 @@ const handler = async(req, res) => {
     switch(method){
         case 'GET':
             try{
-                const reserva = await Reserva.find({cliente: idCliente}).where('status').equals('Reservado').populate({ path: 'mesa', model: Mesa, populate : { path: 'restaurante', model: Restaurante}});
+                const reserva = await Reserva.find({cliente: idCliente, $or:[{status:"Reservado"},{status:"Presente"}]}).populate({ path: 'mesa', model: Mesa, populate : { path: 'restaurante', model: Restaurante}});
                 if(!reserva){
                     return res.status(400).json({success: false});
                 }
