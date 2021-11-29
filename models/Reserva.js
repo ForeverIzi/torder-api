@@ -1,16 +1,18 @@
 const mongoose = require('mongoose');
 const moment = require('moment');
+const { DateTime } = require("luxon");
 
 const ReservaSchema = new mongoose.Schema({
-    horarioCiacao:{
+    horarioCriacao:{
         type: Date,
-        default: Date.now 
     },
     horarioReserva: {
         type: Date,
     },
     status: {
-        type: String},
+        type: String,
+        default: 'Reservado'
+    },
     mesa:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Mesa',
@@ -22,9 +24,13 @@ const ReservaSchema = new mongoose.Schema({
 })
 
 ReservaSchema.pre('save', function(next){
-    const data = Date.now();
-    this.horarioReserva = moment(data).add(30, 'm').toDate();
-    console.log(this.horarioReserva);
+
+    var local = DateTime.local().plus({hour: -3});
+    var rezoned = local.setZone("America/Sao_Paulo");
+    const dataAtual = rezoned;
+
+    this.horarioReserva = dataAtual.plus({ minutes: 30 })
+    this.horarioCriacao = dataAtual;
     next();
 });
 
