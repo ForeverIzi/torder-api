@@ -2,6 +2,7 @@ import dbConnect from "../../../utils/dbConnect";
 import Reserva from '../../../models/Reserva';
 import Mesa from "../../../models/Mesa";
 import middlewareAuth from '../../../middlewares/auth';
+import Restaurante from '../../../models/Restaurante';
 
 dbConnect();
 
@@ -11,7 +12,7 @@ const handler = async(req, res) => {
     switch(method){
         case 'GET':
             try{
-                const reserva = await Reserva.find({cliente: idCliente}).where('status').equals('Reservado').populate({ path: 'mesa', model: Mesa });
+                const reserva = await Reserva.find({cliente: idCliente}).where('status').equals('Reservado').populate({ path: 'mesa', model: Mesa, populate : { path: 'restaurante', model: Restaurante}});
                 if(!reserva){
                     return res.status(400).json({success: false});
                 }
