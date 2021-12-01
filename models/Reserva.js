@@ -28,9 +28,9 @@ ReservaSchema.pre('save', function(next){
     var local = DateTime.local().plus({hour: -3});
     var rezoned = local.setZone("America/Sao_Paulo");
     const dataAtual = rezoned;
-
-    this.horarioReserva = dataAtual.plus({ minutes: 30 })
-    this.horarioCriacao = dataAtual;
+    const add30min = dataAtual.plus({ minutes: 30 });
+    this.horarioReserva = dataAtual.toLocaleString(DateTime.DATETIME_SHORT)
+    this.horarioCriacao = add30min.toLocaleString(DateTime.DATETIME_SHORT);
     next();
 });
 
