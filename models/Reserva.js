@@ -25,7 +25,7 @@ const ReservaSchema = new mongoose.Schema({
 
 ReservaSchema.pre('save', function(next){
 
-    var local = DateTime.local().plus({hour: -3});
+    var local = DateTime.local();
     var rezoned = local.setZone("America/Sao_Paulo");
     const dataAtual = rezoned;
     const add30min = dataAtual.plus({ minutes: 30 });
